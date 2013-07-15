@@ -1,0 +1,12 @@
+<section>
+	<h3 class="name">{{name}}</h3>
+	{{#pass}}
+	<h3>{{type}}pass. Also authorized for {{secondary_user}}</h3>
+	{{/pass}}
+	<h3>The following elements have been collected:</h3>
+	<ul>
+	{{#elements}}
+		<li>{{type}}</li>
+	{{/elements}}
+	</ul>
+</section>

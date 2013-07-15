@@ -1,0 +1,31 @@
+{{#example_2}}
+	<h2>{{excellent_book}}</h2>
+	{{#with author}}
+	<h3>Written by {{firstName}} {{lastName}}</h3>
+	{{/with}}
+{{/example_2}}
+
+{{#example_3}}
+	<ul class="people">
+		{{#each people}}
+			<li id="{{this}}">{{this}}</li>
+		{{/each}}
+	</ul>
+{{/example_3}}
+
+{{#example_4}}
+	{{#if author}}
+	<h3>{{firstName}} {{lastName}}</h3>
+	{{else}}
+	<h3>Author not found</h3>
+	{{/if}}
+{{/example_4}}
+
+{{#example_5}}
+	<h3>Comments</h3>
+	<div class="comments">
+		{{#each comments}}
+			<h2><a href="/posts{{../permalink}}#{{id}}">{{title}}</a></h2>
+		{{/each}}
+	</div>
+{{/example_5}}

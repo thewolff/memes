@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Memes</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Memes</h1>
+					<h3>Beyond LOLCats</h3>
+					<img width="400" height="400" src="img/dune-cat2.jpg"/>
+				</section>
+				<section>
+					<h2>Fun with Chrome DevTools</h2>
+					<img width="500" height="343" src="img/profound_js.png"/>
+				</section>
+
+				<section>
+					<section>
+						<h2>Rekindling that console.log magic</h2>
+					</section>
+					<section>
+						<h2>Most of us are familiar with this guy:</h2>
+						<pre><code data-key="0">
+	var foo = 'bar';
+	console.log(foo);
+						</code></pre>
+					</section>
+					<section>
+						<h2>That's great. And boring.</h2>
+						<div class="fragment">
+							<h3>console.log knows you take him for granted.</h3>
+							<img src="img/strong_sad.jpg"/>
+						</div>
+
+
+					</section>
+					<section>
+						<h2>So he's decided to make things...interesting</h2>
+						<pre class="fragment"><code data-key="1">
+	var user = 't_anderson';
+	var count = 3.555;
+	console.log('%cUser %s has logged in %d times (%f actual)',
+	"color:orange; background:blue; font-size: 20px;", user, count, count);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Console format specifiers</h2>
+						<ul>
+							<li><a href="#/2/3">%s - formats the value as a string</a></li>
+							<li><a href="#/2/3">%d or %i - formats the value as an integer.</a></li>
+							<li><a href="#/2/3">%f - formats the value as a floating point value.</a></li>
+							<li><a href="#/2/5">%o - formats the value as an expandable DOM element.</a></li>
+							<li><a href="#/2/6">%O - formats the value as an expandable JavaScript object.</a></li>
+							<li><a href="#/2/3">%c - formats the output string according to css that you provide.</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Why, I could expand that tree all day!</h2>
+						<pre><code data-key="2">
+	var c_slide = Reveal.getCurrentSlide();
+	console.log('The current section: %o as a dom element', c_slide);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Oh, I guess you wanted a JS object instead.</h2>
+						<pre ><code data-key="3">
+	var c_slide = Reveal.getCurrentSlide();
+	console.log('The current section: %O as a JS object', c_slide);
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Did you know that console.log has a whole (dsy)functional family?</h2>
+						<img src="img/bluths.jpg"/>
+					</section>
+					<section>
+						<h2>It's Arrested (JavaScript) Development</h2>
+						<ul>
+							<li><a href="#/3/2">console.assert(expression,object)</a></li>
+							<li>console.clear(label) - does exactly what you think</li>
+							<li><a href="#/3/3">console.count(label)</a></li>
+							<li><a href="#/3/4">console.error(object [, object, ...])</a></li>
+							<li><a href="#/3/5">console.group(object[, object, ...]), console.groupEnd()</a>
+							<li><a href="#/3/6">console.profile(label), console.profileEnd()</a></li>
+							<li><a href="#/3/7">console.time(label), console.timeEnd()</a></li>
+							<li><a href="#/3/8">console.trace()</a></li>
+							<li><a href="#/3/9">debugger</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Be More Assertive</h2>
+						<pre><code data-key="4">
+	var $c_slide = $(Reveal.getCurrentSlide());
+	console.assert($c_slide.children().length > 0, 'Child nodes are < 0');
+	console.assert($c_slide.children().length > 3, 'Child nodes are < 3');
+						</code></pre>
+					</section>
+					<section>
+						<h2>Count Von Count</h2>
+						<pre><code data-key="5">
+	var incoming = undefined;
+	if(arguments.length) {
+		incoming = data;
+	}
+	console.count('Function called with arguments "'+incoming+'"');
+						</code></pre>
+					</section>
+					<section>
+						<h2>Error'd!</h2>
+						<pre><code data-key="6">
+	function connect(){
+		var errorCode = 1;
+		if(errorCode) {
+			console.error("Error: %s (%i)", "Server is  not responding", 500);
+		}
+	}
+	connect();
+						</code></pre>
+					</section>
+					<section>
+						<h2>Group Therapy</h2>
+						<pre><code data-key="7">
+	var user = 'zero_cool';
+
+	console.group('Authenticating user %s', user)
+
+	console.log('User authenticated', user)
+
+	console.group('%s is hacking the Gibson', user);
+	console.log("The Gibson has been hacked");
+	console.groupEnd();
+
+	console.groupEnd();
+						</code></pre>
+					</section>
+					<section>
+						<h2>Profiling</h2>
+						<pre><code data-key="8">
+	function classUpKids($elem) {
+		console.profile('Processing Current Slide')
+		$elem.children().each(function(){
+			$(this).addClass('processed');
+		})
+		console.profileEnd()
+	}
+	classUpKids($elem);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Console's Very Own Timer</h2>
+						<pre><code data-key="9">
+	console.time("Array initialize");
+	var arr = ['a','bananafish', 'c,','d'];
+	for (var i = arr.length - 1; i >= 0; i--) {
+		console.log(arr[i]);
+		arr[i] = new Object();
+	}
+	console.timeEnd("Array initialize");
+						</code></pre>
+					</section>
+					<section>
+						<h2>Tracing Out</h2>
+						<pre><code data-key="10">
+	function bar() {
+		console.trace();
+	}
+	function foo() {
+		console.trace();
+		bar();
+	}
+
+	foo();
+						</code></pre>
+					</section>
+					<section>
+						<h2>Debugger - Breakpoints as You Code</h2>
+						<pre><code data-key="11">
+	var $c_slide = $(Reveal.getCurrentSlide());
+	$c_slide.children().each(function(){
+		debugger;
+		$(this).addClass('after_debug');
+	});
+						</code></pre>
+					</section>
+					<section>
+						<h2>One Other Hidden Gem: &lt;function scope&gt;</h2>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h2>JS Templating</h2>
+						<h3>Proof of the Secret Developer Hipster Cabal</h3>
+						<h1 style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg); ">}</h1>
+					</section>
+					<section>
+						<h2>Mustache.js - All Templates, No Logic</h2>
+						<ul>
+							<li>Designed to make you hate inserting dynamic content less</li>
+							<li>Entirely logicless aka make sure your data is in order</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code>
+	var obj = {
+		name: 'Corbin Dallas',
+		pass: {
+			type: multi,
+			secondary_user: 'Leeloo Dallas'
+		}
+		elements: [{type: earth}, {type: fire},
+		{type: water}, {type: wind}, {type:leeloo}]
+	}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+	&lt;section&gt;
+		&lt;h3 class="name"&gt;{{name}}&lt;/h3&gt;
+		{{#pass}}
+		&lt;h3&gt;{{type}}pass. Also authorized for {{secondary_user}}&lt;/h3&gt;
+		{{/pass}}
+		&lt;h3&gt;The following elements have been collected:&lt;/h3&gt;
+		&lt;ul&gt;
+		{{#elements}}
+			&lt;li&gt;{{type}}&lt;/li&gt;
+		{{/elements}}
+		&lt;/ul&gt;
+	&lt;/section&gt;
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+$.ajax({
+	url: 'templates/mustache.html',
+	type: 'GET',
+	success: function(data){
+	console.log(data)
+	var compiledTemplate = Mustache.compile(data);
+	$(Reveal.getCurrentSlide()).html(compiledTemplate(obj));
+	}
+});
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-key="12">
+						</code></pre>
+					</section>
+					<section>
+						<h3>Neat, but limitations</h3>
+						<ul>
+							<li>Logicless templates makes for a clean solution...</li>
+							<li class="fragment">...but can result in a lot of object preprocessing</li>
+							<li class="fragment">No real conditional or loop helpers</li>
+							<li class="fragment">Can't easily access current index in arrays</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Could be more&hellip; hipstery.</h3>
+						<img height="342" src="img/marty_hipster.jpg"/>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Oh, I think we've got you covered here:</h3>
+						<img src="img/handlebars_logo.png"/>
+					</section>
+					<section>
+						<h3>Handlebars.js</h3>
+						<ul>
+							<li>Extension of Mustache.js</li>
+							<li>Can import and compile mustache.js templates</li>
+							<li>Crazy extensible - add your own helpers</li>
+							<li>Provides a slew of conditional and looping helpers</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code>
+	Handlebars.registerHelper('list', function(items, options) {
+	  var out = "&lt;ul&gt;";
+
+	  for(var i=0, l=items.length; i&lt;l; i++) {
+	    out = out + "&lt;li&gt;" + options.fn(items[i]) + "&lt;/li&gt;";
+	  }
+
+	  return out + "&lt;/ul&gt;";
+	});
+
+	var h_obj = {
+			people: [
+			    {firstName: "Eddie", lastName: "Money"},
+			    {firstName: "Jesus", lastName: "Jones"},
+			    {firstName: "Colin", lastName: "Meloy"}
+			  ]
+	}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+	{{#list people}}{{firstName}} {{lastName}}{{/list}}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-key="13"></code></pre>
+					</section>
+					<section>
+						<h2>Change context using #with</h2>
+						<pre><code>
+	var obj = {
+		excellent_book: 'Sirens of Titan',
+		author: {
+			firstName: 'Kurt',
+			lastName: 'Vonnegut'
+		}
+	}
+
+	&lt;h2&gt;{{excellent_book}}&lt;/h2&gt;
+	{{#with author}}
+	&lt;h3&gt;Written by {{firstName}} {{lastName}}&lt;/h3&gt;
+	{{/with}}
+						</code></pre>
+					</section>
+					<section>
+<<<<<<< HEAD
+						<pre><code data-key="14">
+						</code></pre>
+=======
+					<h2>Backbone:<br/> Real World Use</h2>
+					<ul>
+						<li>Wordpress 3.5</li>
+						<li>DocumentCloud</li>
+						<li>USA Today</li>
+						<li>Foursquare (homepage map and lists)</li>
+						<li>Hulu</li>
+						<li><a href="http://backbonejs.org/#examples">A hojillion more...</a></li>
+					</ul>
+>>>>>>> 2f2b7fbfa31ae9471f690c75f4c2c20e8410c8f5
+					</section>
+					<section>
+						<h3>Painless Iteration with #each</h3>
+						<pre><code>
+	{
+		people: [
+			'Scott Pilgrim',
+			'Lucas Lee',
+			'Gideon Graves'
+		]
+	};
+
+	&lt;ul class="people"&gt;
+		{{#each people}}
+			&lt;li id="{{this}}"&gt;{{this}}&lt;/li&gt;
+		{{/each}}
+	&lt;/ul&gt;
+						</code></pre>
+					</section>
+					<section>
+<<<<<<< HEAD
+						<pre><code data-key="15"></code></pre>
+					</section>
+					<section>
+						<h2>Conditional Logic</h2>
+						<pre><code>
+	{
+		author: undefined
+	}
+
+	{{#if author}}
+	&lt;h3&gt;{{firstName}} {{lastName}}&lt;/h3&gt;
+	{{else}}
+	&lt;h3&gt;Author not found&lt;/h3&gt;
+	{{/if}}
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-key="16"></code></pre>
+					</section>
+					<section>
+						<h3>Advanced Pathing in Templates</h3>
+						<pre><code>
+	{
+		permalink: '/articles/wicker_man',
+		comments: [
+			{id:01, title:'Wrong!'},
+			{id:02, title:'Lorem this Ipsum!'},
+		]
+	}
+
+	&lt;h3&gt;Comments&lt;/h3&gt;
+	&lt;div class="comments"&gt;
+		{{#each comments}}
+			&lt;h2&gt;&lt;a href="/posts{{../permalink}}#{{id}}"&gt;{{title}}&lt;/a&gt;&lt;/h2&gt;
+		{{/each}}
+	&lt;/div&gt;
+						</code></pre>
+					</section>
+					<section>
+						<pre><code data-key="17">
+						</code></pre>
+=======
+						<h2>Further Resources</h2>
+						<ul>
+							<li><a href="http://backbonejs.org/">Backbonejs.org - exhaustive dox</a></li>
+							<li><a href="https://github.com/documentcloud/backbone">The Backbone Repo</a></li>
+							<li><a href="http://addyosmani.github.com/backbone-fundamentals/">Developing Backbone.js Applications</a> - open source e-book by Addy Osmani</li>
+							<li><a href="http://todomvc.com/">TodoMVC</a> - JS frameworks put to the test</li>
+						</ul>
+>>>>>>> 2f2b7fbfa31ae9471f690c75f4c2c20e8410c8f5
+					</section>
+				</section>
+
+				<section>
+					<h2>Thank you!</h2>
+				</section>
+
+
+			</div>
+
+		</div>
+		<script src="lib/js/jquery-2.0.0.min.js"></script>
+		<script src="lib/js/handlebars.js"></script>
+		<script src="lib/js/mustache.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			function executeExamples(key) {
+				switch(key) {
+					case 0:
+						basicConsole();
+						break;
+					case 1:
+						formatConsole();
+						break;
+					case 2:
+						consoleAsDom();
+						break;
+					case 3:
+						consoleAsJS();
+						break;
+					case 4:
+						exAssert();
+						break;
+					case 5:
+						exCount();
+						break;
+					case 6:
+						exError();
+						break;
+					case 7:
+						exGroup();
+						break;
+					case 8:
+						exProfile();
+						break;
+					case 9:
+						exTime();
+						break;
+					case 10:
+						exTrace();
+						break;
+					case 11:
+						exDebugger();
+						break;
+					case 12:
+						exMustache();
+						break;
+					case 13:
+						exHB1();
+						break;
+					case 14:
+						exHB2(14)
+						break;
+					case 15:
+						exHB2(15)
+						break;
+					case 16:
+						exHB2(16)
+						break;
+					case 17:
+						exHB2(17)
+						break;
+					default:
+						break;
+				}
+			}
+
+			function basicConsole() {
+				var foo = 'bar';
+				console.log(foo);
+			}
+
+			function formatConsole() {
+				var user = 't_anderson';
+				var count = 3.555;
+				console.log('%cUser %s has logged in %d times (%f actual)', "color:orange; background:blue; font-size: 20px;", user, count, count);
+			}
+
+			function consoleAsDom() {
+				var c_slide = Reveal.getCurrentSlide();
+				console.log('The current section: %o as a dom element', c_slide);
+			}
+
+			function consoleAsJS() {
+				var c_slide = Reveal.getCurrentSlide();
+				console.log('The current section: %O as a JS object', c_slide);
+			}
+
+			function exAssert() {
+				var $c_slide = $(Reveal.getCurrentSlide());
+				console.assert($c_slide.children().length > 0, 'Child nodes are < 0');
+				console.assert($c_slide.children().length > 3, 'Child nodes are < 3');
+			}
+
+			function exCount(data) {
+				var incoming = undefined;
+				console.log(arguments.length)
+				if(arguments.length) {
+					incoming = data;
+				}
+				console.count('Function called with arguments "'+incoming+'"');
+			}
+
+			function exError() {
+				function connect(){
+					var errorCode = 1;
+					if(errorCode) {
+						console.error("Error: %s (%i)", "Server is  not responding", 500);
+					}
+				}
+				connect();
+			}
+
+			function exGroup() {
+				var user = 'zero_cool';
+				console.group('Authenticating user %s', user)
+				console.log('User authenticated', user)
+				console.group('%s is hacking the Gibson', user);
+				console.log("The Gibson has been hacked");
+				console.groupEnd();
+				console.groupEnd();
+			}
+
+			function exProfile($elem){
+				function classUpKids($elem) {
+					console.profile('Processing Current Slide')
+					$elem.children().each(function(){
+						$(this).addClass('processed');
+					})
+					console.profileEnd()
+				}
+				if(!arguments.length) {
+					$elem = $(Reveal.getCurrentSlide());
+				}
+				classUpKids($elem);
+			}
+
+			function exTime(){
+				console.time("Array initialize");
+				var arr = ['a','bananafish', 'c,','d'];
+				for (var i = arr.length - 1; i >= 0; i--) {
+					console.log(arr[i]);
+					arr[i] = new Object();
+				}
+				console.timeEnd("Array initialize");
+			}
+
+			function exTrace() {
+				function bar() {
+					console.trace();
+				}
+				function foo() {
+					console.trace();
+					bar();
+				}
+
+				foo();
+			}
+
+			function exDebugger() {
+				var $c_slide = $(Reveal.getCurrentSlide());
+				$c_slide.children().each(function(){
+					debugger;
+					$(this).addClass('after_debug');
+				});
+			}
+
+			function exMustache() {
+				var obj = {
+					name: 'Corbin Dallas',
+					pass: {
+						type: 'multi',
+						secondary_user: 'Leeloo Dallas'
+					},
+					elements: [{type: 'earth'}, {type: 'fire'}, {type: 'water'}, {type: 'wind'}, {type:'leeloo'}]
+				};
+
+				$.ajax({
+					url: 'templates/mustache.html',
+					type: 'GET',
+					success: function(data){
+						var compiledTemplate = Mustache.compile(data);
+						$(Reveal.getCurrentSlide()).html(compiledTemplate(obj));
+
+					}
+				});
+			}
+
+			function exHB1() {
+				Handlebars.registerHelper('list', function(items, options) {
+				  var out = "<ul>";
+
+				  for(var i=0, l=items.length; i<l; i++) {
+				    out = out + "<li>" + options.fn(items[i]) + "</li>";
+				  }
+
+				  return out + "</ul>";
+				});
+
+				var h_obj = {
+						people: [
+						    {firstName: "Eddie", lastName: "Money"},
+						    {firstName: "Jesus", lastName: "Jones"},
+						    {firstName: "Colin", lastName: "Meloy"}
+						  ]
+				}
+
+				$.ajax({
+					url: 'templates/handlebars.html',
+					type: 'GET',
+					success: function(data){
+						console.log(data)
+						var compiledTemplate = Handlebars.compile(data);
+						console.log(compiledTemplate(h_obj))
+
+						$(Reveal.getCurrentSlide()).html(compiledTemplate(h_obj));
+
+					}
+				});
+			}
+
+			function exHB2(key) {
+				var obj;
+				if(key === 14) {
+					obj = {
+						example_2: {
+							excellent_book: 'Sirens of Titan',
+							author: {
+								firstName: 'Kurt',
+								lastName: 'Vonnegut'
+							}
+						}
+					}
+				}
+				if(key === 15) {
+					obj = {
+						example_3: {
+							people: [
+								'Scott Pilgrim',
+								'Lucas Lee',
+								'Gideon Graves'
+							]
+						}
+					}
+				}
+
+				if(key === 16) {
+					obj = {
+						example_4: {
+							author: undefined
+						}
+					}
+				}
+				if(key === 17) {
+					obj = {
+						example_5: {
+							permalink: '/articles/wicker_man',
+							comments: [
+								{id:01, title:'Wrong!'},
+								{id:02, title:'Lorem this Ipsum!'}
+							]
+						}
+					}
+				}
+
+
+				$.ajax({
+					url: 'templates/handlebars_2.html',
+					type: 'GET',
+					success: function(data){
+						var compiledTemplate = Handlebars.compile(data);
+						$(Reveal.getCurrentSlide()).html(compiledTemplate(obj));
+
+					}
+				});
+			}
+			Reveal.addEventListener( 'ready', function( e ) {
+				var code;
+				var key;
+				if($(e.currentSlide).find('code').length!== 0) {
+					code = $(e.currentSlide).find('code');
+					key = code.data('key');
+					executeExamples(key);
+				}
+			} );
+			Reveal.addEventListener( 'slidechanged', function(e) {
+				var code;
+				var key;
+				console.clear();
+				if($(e.currentSlide).find('code').length!== 0) {
+					code = $(e.currentSlide).find('code');
+					key = code.data('key');
+					executeExamples(key);
+				}
+
+			});
+
+		</script>
+
+	</body>
+</html>
