@@ -99,120 +99,24 @@
 				</section>
 				<section>
 					<section>
-						<h2>Did you know that console.log has a whole (dsy)functional family?</h2>
-						<img src="img/bluths.jpg"/>
+						<h2>Value in Memes: A Picture is Worth 1,000 Cats</h2>
+						<img src="img/hasamoney.jpg"/>
 					</section>
 					<section>
-						<h2>It's Arrested (JavaScript) Development</h2>
-						<ul>
-							<li><a href="#/3/2">console.assert(expression,object)</a></li>
-							<li>console.clear(label) - does exactly what you think</li>
-							<li><a href="#/3/3">console.count(label)</a></li>
-							<li><a href="#/3/4">console.error(object [, object, ...])</a></li>
-							<li><a href="#/3/5">console.group(object[, object, ...]), console.groupEnd()</a>
-							<li><a href="#/3/6">console.profile(label), console.profileEnd()</a></li>
-							<li><a href="#/3/7">console.time(label), console.timeEnd()</a></li>
-							<li><a href="#/3/8">console.trace()</a></li>
-							<li><a href="#/3/9">debugger</a></li>
-						</ul>
+						<h2>LOLCats</h2>
+						<img src="img/caturday.jpg"/>
 					</section>
 					<section>
-						<h2>Be More Assertive</h2>
-						<pre><code data-key="4">
-	var $c_slide = $(Reveal.getCurrentSlide());
-	console.assert($c_slide.children().length > 0, 'Child nodes are < 0');
-	console.assert($c_slide.children().length > 3, 'Child nodes are < 3');
-						</code></pre>
+						<h2>In 2011, Cheezburger, the network that runs I Can Has Cheezburger and the Fail blog received $30M in VC funding</h2>
+						<img src="img/spend-all-the-money.jpg" width="300" height="242"/>
 					</section>
 					<section>
-						<h2>Count Von Count</h2>
-						<pre><code data-key="5">
-	var incoming = undefined;
-	if(arguments.length) {
-		incoming = data;
-	}
-	console.count('Function called with arguments "'+incoming+'"');
-						</code></pre>
+						<h2>Worked for Friskies, SXSW, and has an upcoming film deal.</h2>
+						<img src="img/grumpy.jpg" width="350" height="350"/>
 					</section>
 					<section>
-						<h2>Error'd!</h2>
-						<pre><code data-key="6">
-	function connect(){
-		var errorCode = 1;
-		if(errorCode) {
-			console.error("Error: %s (%i)", "Server is  not responding", 500);
-		}
-	}
-	connect();
-						</code></pre>
-					</section>
-					<section>
-						<h2>Group Therapy</h2>
-						<pre><code data-key="7">
-	var user = 'zero_cool';
-
-	console.group('Authenticating user %s', user)
-
-	console.log('User authenticated', user)
-
-	console.group('%s is hacking the Gibson', user);
-	console.log("The Gibson has been hacked");
-	console.groupEnd();
-
-	console.groupEnd();
-						</code></pre>
-					</section>
-					<section>
-						<h2>Profiling</h2>
-						<pre><code data-key="8">
-	function classUpKids($elem) {
-		console.profile('Processing Current Slide')
-		$elem.children().each(function(){
-			$(this).addClass('processed');
-		})
-		console.profileEnd()
-	}
-	classUpKids($elem);
-						</code></pre>
-					</section>
-					<section>
-						<h2>Console's Very Own Timer</h2>
-						<pre><code data-key="9">
-	console.time("Array initialize");
-	var arr = ['a','bananafish', 'c,','d'];
-	for (var i = arr.length - 1; i >= 0; i--) {
-		console.log(arr[i]);
-		arr[i] = new Object();
-	}
-	console.timeEnd("Array initialize");
-						</code></pre>
-					</section>
-					<section>
-						<h2>Tracing Out</h2>
-						<pre><code data-key="10">
-	function bar() {
-		console.trace();
-	}
-	function foo() {
-		console.trace();
-		bar();
-	}
-
-	foo();
-						</code></pre>
-					</section>
-					<section>
-						<h2>Debugger - Breakpoints as You Code</h2>
-						<pre><code data-key="11">
-	var $c_slide = $(Reveal.getCurrentSlide());
-	$c_slide.children().each(function(){
-		debugger;
-		$(this).addClass('after_debug');
-	});
-						</code></pre>
-					</section>
-					<section>
-						<h2>One Other Hidden Gem: &lt;function scope&gt;</h2>
+						<h2>The meme generatgor formerly loved by Redditors, Quickmeme, brings in an estimated $3k-$4k per day.</h2>
+						<img src="img/positivekid.jpg" width="310" height="310"/>
 					</section>
 
 				</section>
